@@ -1,4 +1,4 @@
-# Captcha-Breaker
+# Captcha Breaker
 
 ## Goal
 To train a neural network to correctly identify which characters are being displayed in the CAPTCHA.
