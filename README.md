@@ -31,9 +31,8 @@ The first step of this worked exceedingly well. We created a neural network with
 
 ###### Training and Validation Loss and Accuracy
 <p align="center">
-  <img src="https://github.com/slieb74/Captcha-Breaker/blob/master/images/Screen%20Shot%202018-10-12%20at%203.32.08%20PM.png.png">
+  <img src="https://github.com/slieb74/Captcha-Breaker/blob/master/images/Screen%20Shot%202018-10-12%20at%203.32.08%20PM.png">
 </p>
-
 
 Our neural network correctly identified single character CAPTCHAs in our test set with 91.1% accuracy. Precision was 92%, while Recall and our F1 Score were each 91%, so our model was very good at limiting both false negatives and false positives.
 
@@ -47,6 +46,7 @@ Our neural network correctly identified single character CAPTCHAs in our test se
 <p align="center">
   <img src="https://github.com/slieb74/Captcha-Breaker/blob/master/images/cm_upper.png" height="450" width="450">
 </p>
+
 We then trained the YOLOv3 model to detect where each character was in multi-character CAPTCHAs. However, after training this model for 16 hours, it did not work as planned and we had to scrap it due to time constraints. We needed to find a different method to detect objects because going through the image pixel by pixel would not give a clear picture of what character was being looked at and would be extraordinarily time consuming. 
 
 Our solution was to instead create a moving window algorithm, which will break the image into K equal slices, and then for each slice try to predict which character was in the image. We could then average all of the predictions to see which character was there. This is a highly inaccurate method because many of the slices either contained parts of two characters, or just a sliver of the one character shown. In our research, we found that the upper bound for accuracy for an algorithm like this was under 1%, yet we still gave it a try to replace the YOLOv3 method. Our accuracy ended up being middling as well, as we were unable to crack the 1% threshold. 
